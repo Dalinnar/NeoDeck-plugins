@@ -1,6 +1,6 @@
 from flask import Blueprint,current_app
-from obs.routes import *
-from obs.functions import *
+from obs_studio.routes import *
+from obs_studio.functions import *
 from functools import partial
 
 

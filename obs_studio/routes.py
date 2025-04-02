@@ -3,7 +3,7 @@ from obswebsocket import requests as obsrequests
 from flask import Response,current_app
 from functools import wraps
 import json
-from obs.functions import *
+from obs_studio.functions import *
 
 
 
