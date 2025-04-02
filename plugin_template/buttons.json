@@ -1,0 +1,50 @@
+{
+  "plugin_template": {
+    "button_name_1": {
+      "command": "$hello()",
+      "inputs": [],
+      "style": {}
+    },
+    "button name 2": {
+      "command": "/plugin_template__other_function",
+      "inputs": [],
+      "style": {
+        "image": "eyedropper.png",
+        "image_size": "50%"
+      }
+    },
+    "multiple_actions": {
+      "commands": {
+        "add numer": "/template_add {number}",
+        "subtract numer": "/template_subtract {number}",
+        "multiply number": "/template_multiply {text}",
+        "set number": "/template_set {text}",
+        "reset number": "/template_reset {selection} {number} {text}"
+      },
+      "actions": [
+        "single_click",
+        "double_click",
+        "hold"
+      ],
+      "inputs": [
+        {
+          "TYPE": "input number",
+          "name": "number"
+        },
+        {
+          "TYPE": "input text",
+          "name": "text"
+        },
+        {
+          "TYPE":"select",
+          "name" : "selection",
+          "options": ["add_numer", "subtract_numer", "multiply_number", "set_number", "reset_number"]
+        }
+      ],
+      "style": {
+        "image": "eyedropper.png",
+        "image_size": "50%"
+      }
+    }
+  }
+}

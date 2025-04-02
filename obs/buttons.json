@@ -1,0 +1,75 @@
+{
+    "obs": {
+      "change_screne": {
+        "command" : "/obs_change_scene {obs-scene}",
+        "inputs": [
+          {
+            "TYPE": "select",
+            "name": "obs-scene",          
+            "options_url": "/obs/get_scenes"
+          }
+
+        ]
+      },
+      "trigger_hotkey" :{
+        "command" : "/obs_trigger_hotkey {obs-hotkey}",
+        "inputs": [
+          {
+            "TYPE": "input text",
+            "name": "obs-hotkey"
+          }
+        ]
+      },
+      "toggle_recording" :{
+        "command" : "/obs_toggle_recording",
+        "inputs": []
+      },
+      "start_recording" :{
+        "command" : "/obs_start_recording",
+        "inputs" : []
+      },
+      "stop_recording" :{
+        "command" : "/obs_stop_recording",
+        "inputs" : []
+      },
+
+      "toggle_streaming" :{
+        "command" : "/obs_toggle_streaming",
+        "inputs": []
+      },
+      "start_streaming" :{
+        "command" : "/obs_start_streaming",
+        "inputs" : []
+      },
+      "stop_streaming" :{
+        "command" : "/obs_stop_streaming",
+        "inputs" : []
+      },
+      "toggle_source" : {
+        "command" : "/obs_toggle_source {obs-source}",
+        "inputs": [
+          {
+          "TYPE": "select",
+          "name": "obs-source",          
+          "options_url": "/obs/get_sources"
+        }          
+        ]
+      },
+      "set_volume" : {
+        "command" : "!obs_set_volume {obs-source}",
+        "min":"-100",
+        "max":"0",
+        "inputs": [
+          {
+            "TYPE": "select",
+            "name": "obs-source",          
+            "options_url": "/obs/get_audio_sources"
+          }
+        ]
+      },
+      "toggle_virual_camera" : {
+        "command" : "/obs_toggle_virtual_camera",
+        "inputs": []
+      }
+    }
+  }
