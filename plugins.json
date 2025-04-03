@@ -7,7 +7,7 @@
             "authors":["Dalinnar"],
             "version": "1.0.0",
             "license": "GPL-3",
-            "icon": "assets/obs-studio.png"
+            "icon": "assets/icon.jpg"
         }
     ]
 }
