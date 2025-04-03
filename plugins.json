@@ -1,8 +1,8 @@
 {
     "plugins": [
         {
-            "name":"Obs studio",
-            "folder" :"obs-studio",
+            "name":"OBS_studio",
+            "folder" :"obs_studio",
             "description": "A powerful NeoDeck plugin for OBS Studio that lets you control scenes, sources, audio, and more with a single press.",
             "authors":["Dalinnar"],
             "version": "1.0.0",

@@ -1,14 +1,17 @@
-import pyautogui
-from  flask import render_template
-import os
-from settings import BASE_DIR
+from flask import request, jsonify
 
+# FUNCTION 1
+def function_1():
+    """Example function that returns a success message."""
+    return jsonify({"status": "success", "message": "Function 1 executed"})
 
-def say_hi(text):
-    pyautogui.press("playpause"),
+# FUNCTION 2
+def function_2():
+    """Example function that processes a request."""
+    data = request.get_json()
+    return jsonify({"status": "success", "received": data})
 
-
-def wizlight_template(message):
-    print("holas")
-    print (render_template("wizlight.jinja"))
-    return render_template("wizlight.jinja")
+# FUNCTION 3
+def function_3(message):
+    """Example function that processes a message."""
+    return jsonify({"status": "success", "message": f"Function 3 received: {message}"})

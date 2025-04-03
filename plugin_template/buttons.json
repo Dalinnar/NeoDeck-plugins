@@ -6,7 +6,7 @@
       "style": {}
     },
     "button name 2": {
-      "command": "/plugin_template__other_function",
+      "command": "/plugin_command_1",
       "inputs": [],
       "style": {
         "image": "eyedropper.png",

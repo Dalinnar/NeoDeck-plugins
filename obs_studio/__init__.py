@@ -1,7 +1,8 @@
 from flask import Blueprint,current_app
-from obs_studio.routes import *
-from obs_studio.functions import *
+from .routes import *
+from .functions import *
 from functools import partial
+from obs_studio import *
 
 
 #CHANGE plugin_template TO YOUR PLUGIN NAME
