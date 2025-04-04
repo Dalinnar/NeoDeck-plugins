@@ -8,6 +8,16 @@
             "version": "1.0.0",
             "license": "GPL-3",
             "icon": "assets/icon.jpg"
+        },
+        {
+            "name": "death_counter",
+            "folder": "death_counter",
+            "description": "A simple counter to track deaths, runs, or any other actions with ease.",
+            "authors": ["dalinnar"],
+            "version": "1.0.0",
+            "license": "GPL-3",
+            "icon": "assets/icon.jpg"
         }
+        
     ]
 }

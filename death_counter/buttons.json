@@ -1,0 +1,27 @@
+{
+  "death_counter": {
+    "set_counter": {
+      "commands": {
+        "add numer": "/counter_add [{route}] {value}",
+        "counter subtract": "/counter_substract [{route}] {value}",
+        "counter set": "/counter_set [{route}] {value}"
+      },
+      "actions": [
+        "single_click",
+        "double_click",
+        "hold"
+      ],
+      "inputs": [
+        {
+          "TYPE": "input number",
+          "name": "value"
+        },
+        {
+          "TYPE": "sys file",
+          "name": "route",
+          "shared": true
+        }
+      ]
+    }
+  }
+}

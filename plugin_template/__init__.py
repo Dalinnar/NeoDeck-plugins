@@ -13,7 +13,14 @@ plugin = Blueprint(plugin_name, __name__)
 plugin.settings = {
     
 }
-
+# PLUGIN METADATA
+plugin.metadata= {
+    "name": plugin_name,
+    "version": plugin_version,
+    "creators": creators,
+    "description": "Plugin description",
+    "icon": "assets/icon.jpg"
+}
 # COMMAND MAPPING
 plugin.command_map = {
     "/plugin_command_1": lambda: function_1(),
@@ -28,3 +35,8 @@ plugin.monitors = {}
 plugin.add_url_rule('/plugin/route_1', view_func=function_route_1)
 plugin.add_url_rule('/plugin/route_2', view_func=function_route_2)
 plugin.add_url_rule('/plugin/route_3', view_func=function_route_3)
+
+
+def init():
+    pass
+plugin.init = init

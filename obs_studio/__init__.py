@@ -1,19 +1,27 @@
 from flask import Blueprint,current_app
 from obs_studio.routes import *
 from obs_studio.functions import *
-from functools import partial
 from obs_studio import *
 
 
 #CHANGE plugin_template TO YOUR PLUGIN NAME
 #LEARN HOW TO USE OBS WEBSOCKET ON 
 #https://github.com/obsproject/obs-websocket/blob/master/docs/generated/protocol.md
-plugin_name = 'OBS'
-plugin_version = "1.0.0"
-
+plugin_name = 'OBS_studio'
+plugin_version = "1.0.1"
 creators = ["Dalinnar"]
+description = "A powerful NeoDeck plugin for OBS Studio that lets you control scenes, sources, audio, and more with a single press."
 
 plugin = Blueprint(plugin_name, __name__)
+
+plugin.metadata = {
+    "name": plugin_name,
+    "version": plugin_version,
+    "creators": creators,
+    "description": description,
+    "icon": "assets/icon.jpg"
+}
+
 plugin.settings = {
     "server_port" : 4455,
     "server_password" : "",
