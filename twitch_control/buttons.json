@@ -1,0 +1,101 @@
+{
+  "twitch_control": {
+    "send_message": {
+      "command": "/twitch_control_send_message {message}",
+      "inputs": [
+        {
+          "TYPE": "input text",
+          "name": "message"
+        }
+      ]
+    },
+    "viewers_count": {
+      "command": "#monitor",
+      "inputs": [],
+      "track": "twitch_live_viewers",
+      "collect_data_from": "usage_dict.twitch_live_viewers",
+      "style": {}
+    },
+    "last_follower": {
+      "command": "#monitor",
+      "inputs": [],
+      "track": "latest_supporters",
+      "collect_data_from": "usage_dict.latest_supporters.last_follower",
+      "style": {}
+    },
+    "last_subscriber": {
+      "command": "#monitor",
+      "inputs": [],
+      "track": "latest_supporters",
+      "collect_data_from": "usage_dict.latest_supporters.last_subscriber"
+    },
+    "emote_mode": {
+      "command": "/twitch_control_emote_mode",
+      "inputs": []
+    },
+    "execute_ad": {
+      "command": "/twitch_control_execute_add",
+      "inputs": []
+    },
+    "make_a_poll": {
+      "command": "/twitch_control_make_poll [{title}] [{opt1}] [{opt2}] [{opt3}] [{opt4}] ({enable_channel_points}) ({channel_points_cost})",
+      "inputs": [
+        {
+          "TYPE": "input text",
+          "name": "title",
+          "required": true
+        },
+        {
+          "TYPE": "input text",
+          "name": "opt1",
+          "required": true
+        },
+        {
+          "TYPE": "input text",
+          "name": "opt2",
+          "required": true
+        },
+        {
+          "TYPE": "input text",
+          "name": "opt3"
+        },
+        {
+          "TYPE": "input text",
+          "name": "opt4"
+        },
+        {
+          "TYPE": "input checkbox",
+          "name": "enable_channel_points"
+        },
+        {
+          "TYPE": "input number",
+          "name": "channel_points_cost",
+          "dependant_on": "enable_channel_points"
+        }
+      ]
+    },
+    "end_poll": {
+      "command": "/twitch_control_end_poll",
+      "inputs": []
+    },
+    "toggle_slow_mode": {
+      "command": "/twitch_control_toggle_slow {seconds}",
+      "inputs": [
+        {
+          "TYPE": "input number",
+          "name": "seconds"
+        }
+      ]
+    },
+    "toggle_follower_mode": {
+      "command": "/twitch_control_toggle_follow_mode",
+      "inputs": []
+    },
+    "toggle_sub_mode":{
+      "command": "/twitch_control_toggle_sub_mode",
+      "inputs": []
+
+    }
+
+  }
+}

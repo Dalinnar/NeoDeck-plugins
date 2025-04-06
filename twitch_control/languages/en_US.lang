@@ -1,0 +1,32 @@
+TWITCH_CONTROL_CATEGORY_NAME=Twitch Control
+
+
+TWITCH_CONTROL_emote_mode__btn_name=Toggle emote mode
+TWITCH_CONTROL_end_poll__btn_name=End poll
+TWITCH_CONTROL_execute_ad__btn_name=Run ad
+TWITCH_CONTROL_last_follower__btn_name=Last follower
+TWITCH_CONTROL_last_subscriber__btn_name=Last subscriber
+TWITCH_CONTROL_make_a_poll__btn_name=Create a poll
+TWITCH_CONTROL_send_message__btn_name=Send message
+TWITCH_CONTROL_toggle_follower_mode__btn_name=Toggle follower-only mode
+TWITCH_CONTROL_toggle_sub_mode__btn_name=Toggle sub-only mode
+TWITCH_CONTROL_toggle_slow_mode__btn_name=Toggle slow mode
+TWITCH_CONTROL_viewers_count__btn_name=Viewer count
+
+TWITCH_CONTROL_make_a_poll_input0=Poll question
+TWITCH_CONTROL_make_a_poll_input1=Poll answer 1
+TWITCH_CONTROL_make_a_poll_input2=Poll answer 2
+TWITCH_CONTROL_make_a_poll_input3=Poll answer 3
+TWITCH_CONTROL_make_a_poll_input4=Poll answer 4
+TWITCH_CONTROL_make_a_poll_input5=Allow adinional votes
+TWITCH_CONTROL_make_a_poll_input6=Points per vote
+
+TWITCH_CONTROL_send_message_input0=Message
+
+
+#settings labels
+label__get_your_api_key_here=Get your API key here
+label__access_token=Access token
+label__client_id=Client ID
+label__refresh_token=Refresh token
+label__twitch_username=Twitch username

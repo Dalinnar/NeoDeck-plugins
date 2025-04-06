@@ -24,9 +24,9 @@ plugin.settings = {
 }
 # COMMAND MAPPING
 plugin.command_map = {
-    "/counter_add": counter_add,
-    "/counter_substract": counter_substract,
-    "/counter_set": counter_set,
+    "/counter_add": lambda message:counter_substract(message),
+    "/counter_substract": lambda message:counter_substract(message),
+    "/counter_set": lambda message: counter_set(message),
 }
 
 # PLUGIN MONITORS

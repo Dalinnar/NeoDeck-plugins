@@ -4,21 +4,37 @@ from functools import partial
 from plugin_template.functions import *
 from plugin_template.routes import *
 
-# CHANGE THESE VALUES FOR THE PLUGIN
-plugin_name = 'PLUGIN_NAME'  # Plugin name
+
+plugin_name = 'PLUGIN_NAME'  # Plugin name (must be the same as the folder name)
 plugin_version = "1.0.0"  # Plugin version
 creators = ["CREATOR_NAME"]  # List of creators
+description = "Plugin description"  # Plugin description
 
 plugin = Blueprint(plugin_name, __name__)
+
+
+"""
+"#" : link reference, to go and see maybe some docts about how to ...
+"_" : private variable, not visible in the settings
+"""
 plugin.settings = {
-    
+    "_setting_hide" : "value",
+    "#button" : "https://example.com",
+    "setting_bool" : True,
+    "setting_int" : 1,
+    "settings_list" : ["item1", "item2", "item3"],
+    "setting_dict" : {
+        "key1": "value1",
+        "key2": "value2",
+        "key3": "value3"
+    }
 }
 # PLUGIN METADATA
 plugin.metadata= {
     "name": plugin_name,
     "version": plugin_version,
     "creators": creators,
-    "description": "Plugin description",
+    "description": description,
     "icon": "assets/icon.jpg"
 }
 # COMMAND MAPPING
