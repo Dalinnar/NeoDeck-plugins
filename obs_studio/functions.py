@@ -1,5 +1,4 @@
-
-
+import math
 from functools import wraps
 from flask import current_app
 from obswebsocket import obsws,requests as obsrequests
@@ -136,10 +135,16 @@ def get_source_data(ws, source_name):
     except Exception as e:
         raise ValueError(f"Error retrieving data for source '{source_name}': {e}")
     
+
+
+def set_volumedb(x):
+    """transform the volume level from 0 to 100 to a value between -100 and 0 on a logarithmic scale"""
+    return 21.67 * math.log(x + 1) - 100
+
 @with_obs_connection
 def set_source_volume(ws, message):
     message = message.split(" ", 1)[1]
-    volume_level = int(message.split(" ", -1)[-1])
+    volume_level = set_volumedb(max(0, min(100, int(message.split()[-1]))))
     source_name = message.rsplit(" ", 1)[0]
     
     try:
