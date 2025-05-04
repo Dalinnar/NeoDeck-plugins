@@ -1,3 +1,4 @@
 #ignore the pycahge
 *.pyc
 __pycache__/
+generator.py
