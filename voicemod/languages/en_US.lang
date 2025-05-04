@@ -1,0 +1,15 @@
+VOICEMOD_CATEGORY_NAME=VoiceMod
+
+VOICEMOD_open_soundboard__btn_name=Open Soundboard
+VOICEMOD_open_voices__btn_name=Open Voices
+VOICEMOD_togglebackground__btn_name=Toggle Background
+VOICEMOD_togglehearmyvoice__btn_name=Toggle Hear My Voice
+VOICEMOD_togglevoicechanger__btn_name=Toggle Voice Changer
+
+VOICEMOD_open_soundboard_input0=Soundboard
+
+label__voicemod_key=API Key
+label__port=Port
+label__uuid=UUID (generated automatically)
+
+label__get_your_key_here=Get your key here

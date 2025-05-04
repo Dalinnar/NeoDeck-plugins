@@ -1,0 +1,31 @@
+{
+  "voicemod": {
+    "open_soundboard": {
+      "command": "$open_soundboard('{soundboard}')",
+      "inputs": [
+        {
+          "TYPE": "select",
+          "name": "soundboard",
+          "options_url": "/voicemod/soundboards_list"
+        }
+      ]
+
+    },
+    "open_voices":{
+      "command" : "$open_voices()",
+      "inputs":[]
+    },
+    "toggleBackground":{
+      "command" : "/voicemod_toggleBackground",
+      "inputs":[]
+    },
+    "toggleVoiceChanger":{
+      "command" : "/voicemod_toggleVoiceChanger",
+      "inputs":[]
+    },
+    "toggleHearMyVoice":{
+      "command":"/voicemod_toggleHearMyVoice",
+      "inputs":[]
+    }
+  }
+}

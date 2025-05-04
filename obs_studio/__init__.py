@@ -24,7 +24,7 @@ plugin.metadata = {
 
 plugin.settings = {
     "server_port" : 4455,
-    "server_password" : "",
+    "_server_password" : "",
     }
 
 plugin.command_map = {

@@ -8,18 +8,18 @@ def with_obs_connection(func):
     """Decorador que maneja la conexión y desconexión de OBS WebSocket."""
     @wraps(func)
     def wrapper(*args, **kwargs):
-        settings = current_app.get_settings("OBS")  # Obtener configuración de OBS
+        settings = current_app.get_settings("OBS_studio")  #Get obs settings
         ws = obsws(
             current_app.local_ip,
             settings.get("port", 4455),
             settings.get("server_password", "")
         )
         try:
-            ws.connect()  # Establece la conexión con OBS
-            # Llamamos a la función original y pasamos ws como primer argumento
+            ws.connect()
+
             return func(ws, *args, **kwargs)
         finally:
-            ws.disconnect()  # Aseguramos la desconexión cuando termine
+            ws.disconnect()
 
     return wrapper
 
@@ -95,7 +95,7 @@ def get_audio_source_list(ws):
     scenes = get_scene_list()  
     audio_inputs = set()
     for scene in scenes:
-        scene_items = ws.call(obsrequests.GetSceneItemList(sceneName=scene))  # Obtener los items de la escena
+        scene_items = ws.call(obsrequests.GetSceneItemList(sceneName=scene))  #get scene items
         
         for item in scene_items.datain.get("sceneItems", []):
             if item["inputKind"] in possible_audio_sources:
@@ -131,7 +131,7 @@ def get_source_id(ws, source_name):
 def get_source_data(ws, source_name):
     try:
         response = ws.call(obsrequests.GetInputSettings(inputName=source_name))
-        return response.datain  # Devuelve toda la configuración de la fuente
+        return response.datain
     except Exception as e:
         raise ValueError(f"Error retrieving data for source '{source_name}': {e}")
     
@@ -148,7 +148,6 @@ def set_source_volume(ws, message):
     source_name = message.rsplit(" ", 1)[0]
     
     try:
-        # Establece el volumen de la fuente de audio usando inputVolumeDb
         ws.call(obsrequests.SetInputVolume(
             inputName=source_name,
             inputVolumeDb=volume_level

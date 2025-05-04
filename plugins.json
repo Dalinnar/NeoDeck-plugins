@@ -13,7 +13,7 @@
             "name": "death_counter",
             "folder": "death_counter",
             "description": "A simple counter to track deaths, runs, or any other actions with ease.",
-            "authors": ["dalinnar"],
+            "authors": ["Dalinnar"],
             "version": "1.0.0",
             "license": "GPL-3",
             "icon": "assets/icon.jpg"
@@ -22,7 +22,25 @@
             "name": "twitch_control",
             "folder": "twitch_control",
             "description": "A simple counter to track deaths, runs, or any other actions with ease.",
-            "authors": ["dalinnar"],
+            "authors": ["Dalinnar"],
+            "version": "1.0.0",
+            "license": "GPL-3",
+            "icon": "assets/icon.jpg"
+        },
+        {
+            "name": "spotify_connect",
+            "folder": "spotify_connect",
+            "description": "Control Spotify and manage your playlists directly from your deck.",
+            "authors": ["Dalinnar"],
+            "version": "1.0.0",
+            "license": "GPL-3",
+            "icon": "assets/icon.jpg"
+        },
+        {
+            "name": "voicemod",
+            "folder": "voicemod",
+            "description": "Switch voices, play sounds, and control your Voicemod directly from your deck.",
+            "authors": ["Dalinnar"],
             "version": "1.0.0",
             "license": "GPL-3",
             "icon": "assets/icon.jpg"

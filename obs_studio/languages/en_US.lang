@@ -1,29 +1,25 @@
-OBS_CATEGORY_NAME=OBS Studio
+OBS_STUDIO_CATEGORY_NAME=OBS Studio
 
-OBS_change_screne__btn_name=Change Scene
-OBS_change_screne_input0 =Scene
-
-OBS_set_volume__btn_name=Set source volume
-OBS_set_volume_input0=Source 
-
-OBS_toggle_virual_camera__btn_name=Toggle virtual camera
-
-
-OBS_toggle_recording__btn_name=Toggle recording
-OBS_start_recording__btn_name=Start recording
-OBS_stop_recording__btn_name=Stop recording
-
-OBS_toggle_streaming__btn_name=Toggle streaming
-OBS_start_streaming__btn_name=Start streaming
-OBS_stop_streaming__btn_name=Stop streaming
-
-OBS_trigger_hotkey__btn_name=Trigger hotkey
-OBS_trigger_hotkey_input0=Hotkey
-
-OBS_toggle_source__btn_name=Toggle source
-OBS_toggle_source_input0=Source
+OBS_STUDIO_change_screne__btn_name=Change Scene
+OBS_STUDIO_change_screne_input0 =Scene
+OBS_STUDIO_set_volume__btn_name=Set source volume
+OBS_STUDIO_set_volume_input0=Source 
+OBS_STUDIO_toggle_virual_camera__btn_name=Toggle virtual camera
+OBS_STUDIO_toggle_recording__btn_name=Toggle recording
+OBS_STUDIO_start_recording__btn_name=Start recording
+OBS_STUDIO_stop_recording__btn_name=Stop recording
+OBS_STUDIO_toggle_streaming__btn_name=Toggle streaming
+OBS_STUDIO_start_streaming__btn_name=Start streaming
+OBS_STUDIO_stop_streaming__btn_name=Stop streaming
+OBS_STUDIO_trigger_hotkey__btn_name=Trigger hotkey
+OBS_STUDIO_trigger_hotkey_input0=Hotkey
+OBS_STUDIO_toggle_source__btn_name=Toggle source
+OBS_STUDIO_toggle_source_input0=Source
 
 #settings
 
-OBS_setting_server_password=Server password
-OBS_setting_server_port=Server port
+OBS_STUDIO_setting_server_password=Server password
+OBS_STUDIO_setting_server_port=Server port
+
+label__server_password=Server password
+label__server_port=Server port

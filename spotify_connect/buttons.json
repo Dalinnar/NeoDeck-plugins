@@ -1,0 +1,71 @@
+{
+  "spotify_connect": {
+    "manage_playlists": {
+      "commands": {
+        "add_to_playlist": "/spotyfy_add_to_playlist {playlist}",
+        "remove_from_playlist": "/spotyfy_remove_from_playlist {playlist}",
+        "play_playlist": "/spotyfy_play_playlist {playlist}"
+      },
+      "actions": [
+        "single_click",
+        "double_click",
+        "hold"
+      ],
+      "inputs": [
+        {
+          "TYPE": "select",
+          "name": "playlist_options",
+          "options": [
+            "my_playlists",
+            "playlist_link"
+          ],
+          "shared": true
+        },
+        {
+          "TYPE": "select",
+          "name": "playlist",
+          "options_url": "/spotyfy_connect/get_playlists",
+          "dependant_on": "my_playlists",
+          "shared": true
+        },
+        {
+          "TYPE": "input text",
+          "name": "playlist",
+          "dependant_on": "playlist_link",
+          "shared": true
+        }
+      ]
+    },
+    "play/pause": {
+      "command": "/spotify_pp"
+    },
+    "next_song": {
+      "command": "/spotify_next"
+    },
+    "previous_song": {
+      "command": "/spotify_previous"
+    },
+    "shuffle": {
+      "command": "/spotify_shuffle"
+    },
+    "repeat": {
+      "command": "/spotify_repeat"
+    },
+    "set_volume": {
+      "command": "!spotify_volume",
+      "min": "0",
+      "max": "100"
+    },
+    "follow_artist": {
+      "commands": {
+        "follow_artist":"/spotify_follow_artist",
+        "unfollow_artist":"/spotify_unfollow_artist"
+      },
+      "actions": ["single_click","hold"],
+      "inputs" :[]
+    },
+    "like_song":{
+      "command":"/spotify_like_song"
+    }
+  }
+}

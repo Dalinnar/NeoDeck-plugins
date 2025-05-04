@@ -1,0 +1,32 @@
+SPOTIFY_CONNECT_CATEGORY_NAME=Spotify
+
+SPOTIFY_CONNECT_follow_artist__btn_name=Follow artist
+SPOTIFY_CONNECT_like_song__btn_name=Like song
+SPOTIFY_CONNECT_manage_playlists__btn_name=Manage playlists
+SPOTIFY_CONNECT_next_song__btn_name=Next song
+SPOTIFY_CONNECT_play/pause__btn_name=Play/Pause
+SPOTIFY_CONNECT_previous_song__btn_name=Previous song
+SPOTIFY_CONNECT_repeat__btn_name=Repeat mode
+SPOTIFY_CONNECT_set_volume__btn_name=Set volume
+SPOTIFY_CONNECT_shuffle__btn_name=Shuffle
+
+#inputs
+
+option_verbose_follow_artist=Follow artist
+option_verbose_unfollow_artist=Unfollow artist
+
+#manage playlists
+option_verbose_add_to_playlist=Add to playlist
+option_verbose_play_playlist=Play playlist
+option_verbose_remove_from_playlist=Remove from playlist
+select_verbose_my_playlists=My playlists
+select_verbose_playlist_link=Playlist link
+SPOTIFY_CONNECT_manage_playlists_input0=Playlist or link
+SPOTIFY_CONNECT_manage_playlists_input1=Playlist
+SPOTIFY_CONNECT_manage_playlists_input2=Playlist link
+
+#settings
+label__conect_to_spotify=Connect to Spotify
+label__make_your_app=Make your app
+label__Client_ID=Client ID
+label__Client_Secret=Client Secret
