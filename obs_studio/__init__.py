@@ -48,3 +48,4 @@ plugin.monitors= {}
 plugin.add_url_rule('/obs/get_scenes', view_func=get_scene_list_page)
 plugin.add_url_rule('/obs/get_sources', view_func=get_source_list_page)
 plugin.add_url_rule('/obs/get_audio_sources', view_func=get_audio_source_list_page)
+plugin.add_url_rule('/obs/scenes', view_func=dynamic_scenes)

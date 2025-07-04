@@ -14,3 +14,12 @@ def get_source_list_page():
     return Response(json.dumps(get_source_list()), mimetype='application/json')
 def get_audio_source_list_page():
     return Response(json.dumps(get_audio_source_list()), mimetype='application/json')
+
+
+
+def dynamic_scenes():
+    print("heelo from here")
+    #return generate_obs_scene_folder(scenes)
+    print(generate_obs_scene_folder(get_scene_list()))
+    #return Response(json.dumps(generate_obs_scene_folder(get_scene_list())), mimetype='application/json')
+    return jsonify({"success": True, "data": generate_obs_scene_folder(get_scene_list())})

@@ -11,6 +11,10 @@
 
         ]
       },
+      "open scenes": {
+        "command" : "$open_scenes()",
+        "inputs": []
+      },
       "trigger_hotkey" :{
         "command" : "/obs_trigger_hotkey {obs-hotkey}",
         "inputs": [
