@@ -23,3 +23,6 @@ def dynamic_scenes():
     print(generate_obs_scene_folder(get_scene_list()))
     #return Response(json.dumps(generate_obs_scene_folder(get_scene_list())), mimetype='application/json')
     return jsonify({"success": True, "data": generate_obs_scene_folder(get_scene_list())})
+
+def check_connection():
+    return "obs connected succesfully" if obs_is_connected() else "connection error"

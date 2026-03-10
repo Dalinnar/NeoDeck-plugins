@@ -15,7 +15,8 @@ OBS_STUDIO_trigger_hotkey__btn_name=Trigger hotkey
 OBS_STUDIO_trigger_hotkey_input0=Hotkey
 OBS_STUDIO_toggle_source__btn_name=Toggle source
 OBS_STUDIO_toggle_source_input0=Source
-
+OBS_STUDIO_open_scenes__btn_name=Open scenes
+OBS_STUDIO_raw_ws_request__btn_name=Raw WS request
 #settings
 
 OBS_STUDIO_setting_server_password=Server password
@@ -23,3 +24,4 @@ OBS_STUDIO_setting_server_port=Server port
 
 label__server_password=Server password
 label__server_port=Server port
+label__check_connection=check connection

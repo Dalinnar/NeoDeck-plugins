@@ -1,7 +1,7 @@
 from twitch_control.__init__ import plugin_name
 import re
 import requests
-from flask import current_app
+from flask import current_app,jsonify
 
 
 def get_loaded_settings():
@@ -135,11 +135,40 @@ def send_message(message):
     message_response = requests.post(message_url, headers=headers, json=message_data)
     
     if message_response.status_code == 200:
-        print(f"Mensaje enviado con éxito: {message}")
         return True
     else:
-        print(f"Error enviando el mensaje: {message_response.status_code} - {message_response.text}")
         return False  
+
+
+#get status of emote mode
+def get_emote_mode_status():
+    """get a boolean of the current emote mode status"""
+    app_settings = get_loaded_settings()
+    username = app_settings.get('twitch_username', '')
+    channel_id = get_channel_id(username, app_settings)
+
+    if not channel_id:
+        return False
+
+    moderator_id = channel_id  # Puedes usar otro ID si tienes un moderador diferente
+    url = f"https://api.twitch.tv/helix/chat/settings?broadcaster_id={channel_id}&moderator_id={moderator_id}"
+    headers = {
+        "Authorization": f"Bearer {app_settings.get('access_token', '')}",
+        "Client-ID": app_settings.get('client_id', ''),
+    }
+
+    response = requests.get(url, headers=headers)
+
+    if response.status_code != 200:
+        return False
+
+    data = response.json()
+    settings = data.get("data", [])
+    if settings:
+        emote_mode = settings[0].get("emote_mode", False)
+        return jsonify({"data": emote_mode})
+    else:
+        return False
 
 
 emote_mode_active = False
@@ -150,7 +179,6 @@ def toggle_emote_mode():
     channel_id = get_channel_id(username, app_settings)
     
     if not channel_id:
-        print("Could not find channel ID")
         return False
     
     moderator_id = channel_id
@@ -167,7 +195,6 @@ def toggle_emote_mode():
     
     if response.status_code == 200:
         action = "enabled" if emote_mode_active else "disabled"
-        print(f"Emote-only mode {action} for channel")
         return True
     else:
         emote_mode_active = not emote_mode_active
@@ -495,3 +522,5 @@ def create_clip():
     else:
         send_message(f"Error creating clip: {response.status_code} - {response.text}")
         return None
+    
+#bool if its currently streaming

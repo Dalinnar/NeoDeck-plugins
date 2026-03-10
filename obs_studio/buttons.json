@@ -26,7 +26,8 @@
       },
       "toggle_recording" :{
         "command" : "/obs_toggle_recording",
-        "inputs": []
+        "inputs": [],
+        "toggleable": true
       },
       "start_recording" :{
         "command" : "/obs_start_recording",
@@ -39,10 +40,13 @@
 
       "toggle_streaming" :{
         "command" : "/obs_toggle_streaming",
+        "toggleable": true,
         "inputs": []
+        
       },
       "start_streaming" :{
         "command" : "/obs_start_streaming",
+        
         "inputs" : []
       },
       "stop_streaming" :{
@@ -51,6 +55,7 @@
       },
       "toggle_source" : {
         "command" : "/obs_toggle_source {obs-source}",
+        "toggleable": true,
         "inputs": [
           {
           "TYPE": "select",
@@ -72,8 +77,23 @@
         ]
       },
       "toggle_virual_camera" : {
+        "toggleable": true,
         "command" : "/obs_toggle_virtual_camera",
         "inputs": []
+      },
+      "raw_ws_request":{
+        "command" : "/obs_raw_request |{requestType}| |{requestData}|",
+        "inputs": [
+          {
+            "TYPE": "input text",
+            "name": "requestType"
+          },
+          {
+            "TYPE": "textarea",
+            "name": "requestData"
+          }
+        ]
+
       }
     }
   }

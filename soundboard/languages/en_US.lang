@@ -1,0 +1,16 @@
+
+PLUGIN_TEMPLATE_button_name_1__arg_1_name=button action
+PLUGIN_TEMPLATE_button_name_1__btn_name=button name
+
+PLUGIN_TEMPLATE_button_name_2__arg_1_name=button action
+PLUGIN_TEMPLATE_button_name_2__btn_name=button name 3132
+
+PLUGIN_TEMPLATE_CATEGORY_NAME=Plugin Template
+
+SOUNDBOARD_open_soundboard__btn_name=Open Soundboard
+SOUNDBOARD_open_soundboard_input0=Select audio folder
+
+SOUNDBOARD_play_sound__btn_name = Play sound
+
+SOUNDBOARD_play_sound_input0 = Select audio file
+SOUNDBOARD_play_sound_input1 = Repeat

@@ -31,6 +31,7 @@
     },
     "emote_mode": {
       "command": "/twitch_control_emote_mode",
+      "toggleable": true,
       "inputs": []
     },
     "execute_ad": {
@@ -80,6 +81,7 @@
     },
     "toggle_slow_mode": {
       "command": "/twitch_control_toggle_slow {seconds}",
+      "toggleable": true,
       "inputs": [
         {
           "TYPE": "input number",
@@ -89,10 +91,12 @@
     },
     "toggle_follower_mode": {
       "command": "/twitch_control_toggle_follow_mode",
+      "toggleable": true,
       "inputs": []
     },
     "toggle_sub_mode":{
       "command": "/twitch_control_toggle_sub_mode",
+      "toggleable": true,
       "inputs": []
 
     }

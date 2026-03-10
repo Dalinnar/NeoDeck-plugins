@@ -6,7 +6,7 @@ from death_counter.routes import *
 # CHANGE THESE VALUES FOR THE PLUGIN
 plugin_name = 'death_counter'  # Plugin name
 plugin_version = "1.0.0"  # Plugin version
-creators = ["dalinnar"]  # List of creators
+creators = ["Dalinnar"]  # List of creators
 description = "A simple counter to track deaths,runs, or any other actions with ease."
 
 plugin = Blueprint(plugin_name, __name__)

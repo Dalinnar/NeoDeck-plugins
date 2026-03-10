@@ -27,11 +27,11 @@ plugin.metadata= {
 }
 # COMMAND MAPPING
 plugin.command_map = {
-    "/twitch_control_end_poll"      :   lambda          : end_active_poll(),
-    "/twitch_control_emote_mode"    :   lambda          : toggle_emote_mode(),
-    "/twitch_control_execute_add"   :   lambda          : execute_ad(),
-    "/twitch_control_toggle_sub_mode" :   lambda        : toggle_sub_mode(),
-    "/twitch_control_toggle_follow_mode" :   lambda : toggle_follow_mode(),
+    "/twitch_control_end_poll"              :   lambda          : end_active_poll(),
+    "/twitch_control_emote_mode"            :   lambda          : toggle_emote_mode(),
+    "/twitch_control_execute_add"           :   lambda          : execute_ad(),
+    "/twitch_control_toggle_sub_mode"       :   lambda          : toggle_sub_mode(),
+    "/twitch_control_toggle_follow_mode"    :   lambda          : toggle_follow_mode(),
 
     "/twitch_control_make_poll"     :   lambda message  : setup_poll(message),
     "/twitch_control_toggle_slow"   :   lambda message  : toggle_slow_mode(message),
@@ -42,6 +42,10 @@ plugin.command_map = {
 plugin.monitors = {
     "twitch_live_viewers": lambda : get_viewer_count(),
     "latest_supporters" : lambda : get_latest_supporters()
+}
+
+plugin.getters ={
+    "/twitch_control_emote_mode" : lambda : get_emote_mode_status()
 }
 
 def init():

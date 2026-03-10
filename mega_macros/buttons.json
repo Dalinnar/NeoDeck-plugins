@@ -1,0 +1,27 @@
+{
+  "mega_macros": {    
+    "multiple_actions": {
+      "commands": {
+        "execute_macro": "/MM_execute_macro {macro_name}",
+        "record_macro": "/MM_record_macro {macro_name}"        
+      },
+      "actions": [
+        "single_click",        
+        "hold"
+      ],
+      "inputs": [
+        {
+          "TYPE": "input text",
+          "name": "macro_name",
+          "shared": true
+        },
+        {
+          "TYPE":"select",
+          "name" : "selection",
+          "options": ["execute_macro", "record_macro"]
+        }
+      ]
+
+    }
+  }
+}

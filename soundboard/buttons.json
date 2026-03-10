@@ -1,0 +1,26 @@
+{
+  "Soundboard": {
+    "play_sound": {
+        "command": "/soundboard_playsound [{path}] {repeat}",
+        "inputs": [
+          {
+            "TYPE": "sys file",
+            "name": "path"
+          },
+          {
+            "TYPE": "input checkbox",
+            "name" : "repeat"
+          }
+        ]
+    },
+    "open_soundboard": {
+        "command": "$open_sounds_folder('{path}')",
+        "inputs": [
+          {
+            "TYPE": "sys folder",
+            "name": "path"
+          }
+        ]
+    }
+  }
+}

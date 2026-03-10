@@ -1,4 +1,5 @@
 import math
+import json
 import random
 from functools import wraps
 from flask import current_app, jsonify
@@ -6,21 +7,20 @@ from obswebsocket import obsws, requests as obsrequests
 from obswebsocket.exceptions import ConnectionFailure
 
 def with_obs_connection(func):
-    """Decorador que maneja la conexión y desconexión de OBS WebSocket."""
     @wraps(func)
     def wrapper(*args, **kwargs):
-        settings = current_app.get_settings("OBS_studio")  # Get OBS settings
+        settings = current_app.get_settings("OBS_studio")
         ws = obsws(
             current_app.local_ip,
-            settings.get("port", 4455),
+            settings.get("server_port", 4455),
             settings.get("server_password", "")
         )
+
         try:
             ws.connect()
         except ConnectionFailure:
-            # OBS no está corriendo o no acepta conexiones
             current_app.logger.warning("OBS is not running or connection failed.")
-            return  # Or return jsonify({"error": "OBS not available"}), 503
+            return False
 
         try:
             return func(ws, *args, **kwargs)
@@ -28,6 +28,11 @@ def with_obs_connection(func):
             ws.disconnect()
 
     return wrapper
+
+
+@with_obs_connection
+def obs_is_connected(ws):
+    return True
 
 @with_obs_connection
 def change_scene(ws, message=""):
@@ -97,16 +102,21 @@ def get_source_list(ws):
 
 @with_obs_connection
 def get_audio_source_list(ws):
-    possible_audio_sources = ["audio_capture","wasapi_input_capture","wasapi_output_capture","wasapi_process_output_capture","image_source","vlc_source","ffmpeg_source"]
-    scenes = get_scene_list()  
-    audio_inputs = set()
-    for scene in scenes:
-        scene_items = ws.call(obsrequests.GetSceneItemList(sceneName=scene))  #get scene items
-        
-        for item in scene_items.datain.get("sceneItems", []):
-            if item["inputKind"] in possible_audio_sources:
-                audio_inputs.add(item["sourceName"])
-    return list(audio_inputs)
+    audio_kinds = {
+        "wasapi_input_capture",
+        "wasapi_output_capture",
+        "wasapi_process_output_capture",
+        "coreaudio_input_capture",
+        "coreaudio_output_capture"
+    }
+
+    response = ws.call(obsrequests.GetInputList())
+
+    return [
+        i["inputName"]
+        for i in response.getInputs()
+        if i["inputKind"] in audio_kinds
+    ]
 
 @with_obs_connection
 def toggle_source(ws, message):
@@ -150,19 +160,22 @@ def set_volumedb(x):
 def get_volume_level(db):
     """transform the volume level from -100 to 0 to a value between 0 and 100 on an exponential scale"""
     return math.exp((db + 100) / 21.67) - 1
+
+@with_obs_connection
+def get_source_volume(ws, message):
+    message = message.split(" ", 1)[1]
+    try:
+        response = ws.call(obsrequests.GetInputVolume(inputName=message))
+        volume = get_volume_level(int(response.datain.get("inputVolumeDb")))
+        return jsonify({"data": volume})
+    except Exception as e:
+        raise ValueError(f"Error retrieving volume for source '{message}': {e}")
+
 @with_obs_connection
 def set_source_volume(ws, message):
     message = message.split(" ", 1)[1]
     source_name = message.rsplit(" ", 1)[0]
 
-    if message.endswith("get"):
-        try:
-            response = ws.call(obsrequests.GetInputVolume(inputName=source_name))
-            volume = get_volume_level(int(response.datain.get("inputVolumeDb")))
-            return jsonify({"data": volume})
-        except Exception as e:
-            raise ValueError(f"Error retrieving volume for source '{source_name}': {e}")
-    
     try:
         volume_level = set_volumedb(max(0, min(100, int(message.split()[-1]))))
         ws.call(obsrequests.SetInputVolume(
@@ -175,22 +188,43 @@ def set_source_volume(ws, message):
 @with_obs_connection
 def trigger_hotkey(ws, message):
     message = message.lower()
-    keyModifiers = {}
-    if "ctrl" or "control" in message.lower():
+
+    keyModifiers = {
+        "control": False,
+        "shift": False,
+        "alt": False,
+    }
+
+    if "ctrl" in message or "control" in message:
         keyModifiers["control"] = True
-        message = message.replace("ctrl", "")
-    if "shift" in message.lower(): 
+        message = message.replace("ctrl", "").replace("control", "")
+
+    if "shift" in message:
         keyModifiers["shift"] = True
         message = message.replace("shift", "")
-    if "alt" in message.lower():
+
+    if "alt" in message:
         keyModifiers["alt"] = True
         message = message.replace("alt", "")
-    message = message.replace("+", "")
 
-    keySequence = message.split(" ", 1)[1].replace(" ", "")
+    # limpiar separadores
+    message = message.replace("+", " ").strip()
 
-    keyId = f"OBS_KEY_{keySequence}".upper()
-    ws.call(obsrequests.TriggerHotkeyByKeySequence(keyId=keyId, keyModifiers=keyModifiers))
+    # última palabra = tecla
+    key = message.split()[-1]
+
+    # F keys
+    if key.startswith("f") and key[1:].isdigit():
+        keyId = f"OBS_KEY_F{key[1:]}"
+    else:
+        keyId = f"OBS_KEY_{key.upper()}"
+
+    ws.call(
+        obsrequests.TriggerHotkeyByKeySequence(
+            keyId=keyId,
+            keyModifiers=keyModifiers
+        )
+    )
 
 
 def generate_obs_scene_folder(scenes):
@@ -241,3 +275,26 @@ def generate_obs_scene_folder(scenes):
         "columns": cols,
         "rows": rows
     }
+
+@with_obs_connection
+def raw_ws_call(ws, message):
+    print(f"Received raw message: {message}")
+    
+    try:
+        # Split and extract the two middle parts
+        _, request_type, _, data_str, *_ = message.split("|")
+        
+        # Parse JSON (fix quotes and parse)
+        data = json.loads(data_str.strip().replace("'", '"'))
+        
+        # Get and call the request
+        request_class = getattr(obsrequests, request_type.strip(), None)
+        if not request_class:
+            print(f"Request type '{request_type}' not found.")
+            return None
+            
+        ws.call(request_class(**data))
+        
+    except (ValueError, json.JSONDecodeError) as e:
+        print(f"Error processing message: {e}")
+        return None

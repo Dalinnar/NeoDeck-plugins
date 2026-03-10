@@ -2,3 +2,7 @@
 *.pyc
 __pycache__/
 generator.py
+deckerator.py
+plugins/
+*.deck
+plugin_template/
