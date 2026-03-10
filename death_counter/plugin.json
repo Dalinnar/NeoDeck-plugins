@@ -4,9 +4,23 @@
   "creators": [
     "Dalinnar"
   ],
-  "latest_version": "1.0.2",
-  "updated_at": "2026-03-10T11:42:29.572213+00:00",
+  "latest_version": "1.0.3",
+  "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/death_counter/assets/icon.jpg",
+  "updated_at": "2026-03-10T15:44:05.133322+00:00",
   "releases": [
+    {
+      "version": "1.0.3",
+      "tag": "death_counter@1.0.3",
+      "release_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/tag/death_counter%401.0.3",
+      "published_at": "2026-03-10T15:43:47Z",
+      "assets": [
+        {
+          "name": "death_counter-1.0.3.deck",
+          "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/death_counter%401.0.3/death_counter-1.0.3.deck",
+          "size": 9356
+        }
+      ]
+    },
     {
       "version": "1.0.2",
       "tag": "death_counter@1.0.2",
