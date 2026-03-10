@@ -6,7 +6,7 @@ import uuid
 
 
 plugin_name = 'voicemod'  # Plugin name (must be the same as the folder name)
-plugin_version = "1.0.2"  # Plugin version
+plugin_version = "1.0.4"  # Plugin version
 creators = ["Dalinnar"]  # List of creators
 description = "Switch voices, play sounds, and control your Voicemod directly from your deck."  # Plugin description
 

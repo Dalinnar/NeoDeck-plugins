@@ -4,7 +4,7 @@ from spotify_connect.functions import *
 
 # === METADATOS DEL PLUGIN ===
 plugin_name = 'spotify_connect'
-plugin_version = "1.0.2"
+plugin_version = "1.0.3"
 creators = ["Dalinnar"]
 description = "Control Spotify and manage your playlists directly from your deck."
 
