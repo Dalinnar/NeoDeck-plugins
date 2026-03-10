@@ -3,7 +3,7 @@ from twitch_control.functions import *
 from twitch_control.routes import *
 
 plugin_name = 'twitch_control'
-plugin_version = "1.0.0"
+plugin_version = "1.0.1"
 creators = ["Dalinnar"]
 description = "Easily interact with your Twitch audience using powerful chat commands. Manage polls, trigger ads, send messages, and switch between chat modes. and more!"  
 

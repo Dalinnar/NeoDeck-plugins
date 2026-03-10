@@ -6,7 +6,7 @@ from soundboard.routes import *
 
 
 plugin_name = 'soundboard'  # Plugin name (must be the same as the folder name)
-plugin_version = "1.0.0"  # Plugin version
+plugin_version = "1.0.1"  # Plugin version
 creators = ["Dalinnar"]  # List of creators
 description = "simple soundboard"  # Plugin description
 

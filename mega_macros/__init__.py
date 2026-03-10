@@ -6,7 +6,7 @@ from mega_macros.routes import *
 
 
 plugin_name = 'mega_macros'  # Plugin name (must be the same as the folder name)
-plugin_version = "1.4.0"  # Plugin version
+plugin_version = "1.4.1"  # Plugin version
 creators = ["Dalinnar"]  # List of creators
 description = "record your own macros and start doing automatizing them"  # Plugin description
 
