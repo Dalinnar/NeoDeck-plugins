@@ -1,0 +1,24 @@
+{
+  "plugin_name": "twitch_control",
+  "description": "Easily interact with your Twitch audience using powerful chat commands. Manage polls, trigger ads, send messages, and switch between chat modes. and more!",
+  "creators": [
+    "Dalinnar"
+  ],
+  "latest_version": "1.0.2",
+  "updated_at": "2026-03-10T11:42:31.988669+00:00",
+  "releases": [
+    {
+      "version": "1.0.2",
+      "tag": "twitch_control@1.0.2",
+      "release_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/tag/twitch_control%401.0.2",
+      "published_at": "2026-03-10T11:42:12Z",
+      "assets": [
+        {
+          "name": "twitch_control-1.0.2.deck",
+          "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/twitch_control%401.0.2/twitch_control-1.0.2.deck",
+          "size": 24980
+        }
+      ]
+    }
+  ]
+}

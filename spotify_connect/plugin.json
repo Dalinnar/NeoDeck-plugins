@@ -1,0 +1,24 @@
+{
+  "plugin_name": "spotify_connect",
+  "description": "Control Spotify and manage your playlists directly from your deck.",
+  "creators": [
+    "Dalinnar"
+  ],
+  "latest_version": "1.0.2",
+  "updated_at": "2026-03-10T11:42:31.533503+00:00",
+  "releases": [
+    {
+      "version": "1.0.2",
+      "tag": "spotify_connect@1.0.2",
+      "release_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/tag/spotify_connect%401.0.2",
+      "published_at": "2026-03-10T11:42:14Z",
+      "assets": [
+        {
+          "name": "spotify_connect-1.0.2.deck",
+          "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/spotify_connect%401.0.2/spotify_connect-1.0.2.deck",
+          "size": 39123
+        }
+      ]
+    }
+  ]
+}

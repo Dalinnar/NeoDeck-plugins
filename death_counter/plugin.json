@@ -1,0 +1,24 @@
+{
+  "plugin_name": "death_counter",
+  "description": "A simple counter to track deaths,runs, or any other actions with ease.",
+  "creators": [
+    "Dalinnar"
+  ],
+  "latest_version": "1.0.2",
+  "updated_at": "2026-03-10T11:42:29.572213+00:00",
+  "releases": [
+    {
+      "version": "1.0.2",
+      "tag": "death_counter@1.0.2",
+      "release_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/tag/death_counter%401.0.2",
+      "published_at": "2026-03-10T11:42:13Z",
+      "assets": [
+        {
+          "name": "death_counter-1.0.2.deck",
+          "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/death_counter%401.0.2/death_counter-1.0.2.deck",
+          "size": 8882
+        }
+      ]
+    }
+  ]
+}

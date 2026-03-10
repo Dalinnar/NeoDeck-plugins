@@ -1,0 +1,24 @@
+{
+  "plugin_name": "mega_macros",
+  "description": "record your own macros and start doing automatizing them",
+  "creators": [
+    "Dalinnar"
+  ],
+  "latest_version": "1.4.2",
+  "updated_at": "2026-03-10T11:42:30.067308+00:00",
+  "releases": [
+    {
+      "version": "1.4.2",
+      "tag": "mega_macros@1.4.2",
+      "release_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/tag/mega_macros%401.4.2",
+      "published_at": "2026-03-10T11:42:12Z",
+      "assets": [
+        {
+          "name": "mega_macros-1.4.2.deck",
+          "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/mega_macros%401.4.2/mega_macros-1.4.2.deck",
+          "size": 9865
+        }
+      ]
+    }
+  ]
+}
