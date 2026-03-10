@@ -4,9 +4,23 @@
   "creators": [
     "Dalinnar"
   ],
-  "latest_version": "1.4.2",
-  "updated_at": "2026-03-10T11:42:30.067308+00:00",
+  "latest_version": "1.4.3",
+  "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/mega_macros/assets/icon.jpg",
+  "updated_at": "2026-03-10T15:44:05.804170+00:00",
   "releases": [
+    {
+      "version": "1.4.3",
+      "tag": "mega_macros@1.4.3",
+      "release_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/tag/mega_macros%401.4.3",
+      "published_at": "2026-03-10T15:43:47Z",
+      "assets": [
+        {
+          "name": "mega_macros-1.4.3.deck",
+          "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/mega_macros%401.4.3/mega_macros-1.4.3.deck",
+          "size": 10331
+        }
+      ]
+    },
     {
       "version": "1.4.2",
       "tag": "mega_macros@1.4.2",

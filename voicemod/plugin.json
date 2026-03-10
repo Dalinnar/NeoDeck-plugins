@@ -4,9 +4,23 @@
   "creators": [
     "Dalinnar"
   ],
-  "latest_version": "1.0.2",
-  "updated_at": "2026-03-10T11:42:32.494709+00:00",
+  "latest_version": "1.0.4",
+  "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/voicemod/assets/icon.jpg",
+  "updated_at": "2026-03-10T15:44:08.597038+00:00",
   "releases": [
+    {
+      "version": "1.0.4",
+      "tag": "voicemod@1.0.4",
+      "release_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/tag/voicemod%401.0.4",
+      "published_at": "2026-03-10T15:43:47Z",
+      "assets": [
+        {
+          "name": "voicemod-1.0.4.deck",
+          "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/voicemod%401.0.4/voicemod-1.0.4.deck",
+          "size": 40362
+        }
+      ]
+    },
     {
       "version": "1.0.2",
       "tag": "voicemod@1.0.2",

@@ -4,9 +4,23 @@
   "creators": [
     "Dalinnar"
   ],
-  "latest_version": "1.0.2",
-  "updated_at": "2026-03-10T11:42:31.533503+00:00",
+  "latest_version": "1.0.3",
+  "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/spotify_connect/assets/icon.jpg",
+  "updated_at": "2026-03-10T15:44:07.495505+00:00",
   "releases": [
+    {
+      "version": "1.0.3",
+      "tag": "spotify_connect@1.0.3",
+      "release_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/tag/spotify_connect%401.0.3",
+      "published_at": "2026-03-10T15:43:46Z",
+      "assets": [
+        {
+          "name": "spotify_connect-1.0.3.deck",
+          "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/spotify_connect%401.0.3/spotify_connect-1.0.3.deck",
+          "size": 39599
+        }
+      ]
+    },
     {
       "version": "1.0.2",
       "tag": "spotify_connect@1.0.2",
