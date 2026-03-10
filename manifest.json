@@ -23,18 +23,6 @@
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/mega_macros/plugin.json",
     "updated_at": "2026-03-10T16:48:16.816711+00:00"
   },
-  "OBS_studio": {
-    "plugin_name": "OBS_studio",
-    "description": "A powerful NeoDeck plugin for OBS Studio that lets you control scenes, sources, audio, and more with a single press.",
-    "creators": [
-      "Dalinnar"
-    ],
-    "latest_version": "1.1.4",
-    "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/obs_studio/assets/icon.jpg",
-    "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/OBS_studio%401.1.4/OBS_studio-1.1.4.deck",
-    "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/obs_studio/plugin.json",
-    "updated_at": "2026-03-10T15:44:06.367884+00:00"
-  },
   "soundboard": {
     "plugin_name": "soundboard",
     "description": "simple soundboard",
