@@ -110,6 +110,17 @@ def asset_download_url(plugin_name: str, version: str) -> str | None:
     return None
 
 
+def get_icon_url(plugin_dir: Path, folder_name: str) -> str | None:
+    """Return the raw GitHub content URL for the plugin's icon, if it exists."""
+    icon_path = plugin_dir / "assets" / "icon.jpg"
+    if not icon_path.exists():
+        return None
+    return (
+        f"https://raw.githubusercontent.com/{GITHUB_REPO}/main/"
+        f"{folder_name}/assets/icon.jpg"
+    )
+
+
 # ---------------------------------------------------------------------------
 # Discover all plugins
 # ---------------------------------------------------------------------------
@@ -165,6 +176,12 @@ def main():
         releases = get_releases_for_plugin(plugin_name)
         print(f"  Found {len(releases)} release(s) on GitHub")
 
+        icon_url = get_icon_url(plugin_dir, name)
+        if icon_url:
+            print(f"  Icon: {icon_url}")
+        else:
+            print(f"  Icon: not found (assets/icon.jpg missing)")
+
         # --- Update plugin.json ---
         plugin_json_path = plugin_dir / "plugin.json"
 
@@ -173,6 +190,7 @@ def main():
             "description": meta["description"],
             "creators": meta["creators"],
             "latest_version": plugin_version,
+            "icon_url": icon_url,
             "updated_at": datetime.now(timezone.utc).isoformat(),
             "releases": releases,
         }
@@ -190,6 +208,7 @@ def main():
             "description": meta["description"],
             "creators": meta["creators"],
             "latest_version": plugin_version,
+            "icon_url": icon_url,
             "download_url": latest_download,
             "plugin_json_url": (
                 f"https://raw.githubusercontent.com/{GITHUB_REPO}/main/"
