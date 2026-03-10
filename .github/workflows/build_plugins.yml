@@ -1,0 +1,35 @@
+name: Build Plugins
+
+on:
+  push:
+    paths-ignore:
+      - "README.md"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Build plugins
+        run: |
+          mkdir builds
+          for dir in */ ; do
+            if [ -f "$dir/init.py" ]; then
+              python scripts/build_plugin.py "$dir"
+            fi
+          done
+          mv *.deck builds/
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          files: builds/*.deck
