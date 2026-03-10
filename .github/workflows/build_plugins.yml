@@ -1,0 +1,226 @@
+name: Build & Release Plugins
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'manifest.json'
+      - '**/plugin.json'
+      - '.github/**'
+      - 'scripts/**'
+      - '*.md'
+
+permissions:
+  contents: write
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      plugins: ${{ steps.detect.outputs.plugins }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed plugins
+        id: detect
+        run: |
+          # Get list of changed files between last two commits
+          CHANGED=$(git diff --name-only HEAD~1 HEAD)
+          echo "Changed files:"
+          echo "$CHANGED"
+
+          # Find plugin folders (dirs with __init__.py, excluding hidden/scripts)
+          PLUGINS=()
+          while IFS= read -r file; do
+            FOLDER=$(echo "$file" | cut -d'/' -f1)
+            # Skip non-plugin folders
+            if [[ "$FOLDER" == .* ]] || [[ "$FOLDER" == "scripts" ]]; then
+              continue
+            fi
+            # Check it's actually a plugin folder (has __init__.py)
+            if [ -f "$FOLDER/__init__.py" ]; then
+              PLUGINS+=("$FOLDER")
+            fi
+          done <<< "$CHANGED"
+
+          # Deduplicate
+          UNIQUE_PLUGINS=($(echo "${PLUGINS[@]}" | tr ' ' '\n' | sort -u))
+
+          if [ ${#UNIQUE_PLUGINS[@]} -eq 0 ]; then
+            echo "No plugin changes detected."
+            echo "plugins=[]" >> $GITHUB_OUTPUT
+          else
+            # Output as JSON array
+            JSON=$(printf '%s\n' "${UNIQUE_PLUGINS[@]}" | jq -R . | jq -sc .)
+            echo "Detected plugins: $JSON"
+            echo "plugins=$JSON" >> $GITHUB_OUTPUT
+          fi
+
+  build-and-release:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.plugins != '[]' && needs.detect-changes.outputs.plugins != ''
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        plugin: ${{ fromJson(needs.detect-changes.outputs.plugins) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Read plugin metadata
+        id: meta
+        run: |
+          python3 - <<'EOF'
+          import re, os, sys
+
+          plugin = os.environ["PLUGIN"]
+          init_path = f"{plugin}/__init__.py"
+
+          if not os.path.exists(init_path):
+              print(f"ERROR: {init_path} not found", file=sys.stderr)
+              sys.exit(1)
+
+          content = open(init_path).read()
+
+          def extract(var):
+              m = re.search(rf'^{var}\s*=\s*(.+)', content, re.MULTILINE)
+              if not m:
+                  raise ValueError(f"{var} not found in {init_path}")
+              val = m.group(1).strip()
+              # Evaluate safely for strings and lists
+              import ast
+              return ast.literal_eval(val)
+
+          name        = extract("plugin_name")
+          version     = extract("plugin_version")
+          creators    = extract("creators")
+          description = extract("description")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"plugin_name={name}\n")
+              f.write(f"plugin_version={version}\n")
+              f.write(f"creators={','.join(creators)}\n")
+              f.write(f"description={description}\n")
+              f.write(f"tag={name}@{version}\n")
+              f.write(f"deck_file={name}-{version}.deck\n")
+          EOF
+        env:
+          PLUGIN: ${{ matrix.plugin }}
+
+      - name: Check if release already exists
+        id: check_release
+        run: |
+          TAG="${{ steps.meta.outputs.tag }}"
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/tags/$TAG")
+          if [ "$STATUS" = "200" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Release $TAG already exists — skipping."
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "Release $TAG does not exist — will create."
+          fi
+
+      - name: Build .deck file
+        if: steps.check_release.outputs.exists == 'false'
+        run: |
+          PLUGIN="${{ matrix.plugin }}"
+          DECK="${{ steps.meta.outputs.deck_file }}"
+
+          # Zip the plugin folder contents (not the folder itself)
+          cd "$PLUGIN"
+          zip -r "../$DECK" . -x "*.pyc" -x "__pycache__/*" -x "*.DS_Store"
+          cd ..
+          echo "Built: $DECK"
+          ls -lh "$DECK"
+
+      - name: Create GitHub Release and upload .deck
+        if: steps.check_release.outputs.exists == 'false'
+        run: |
+          TAG="${{ steps.meta.outputs.tag }}"
+          DECK="${{ steps.meta.outputs.deck_file }}"
+          NAME="${{ steps.meta.outputs.plugin_name }}"
+          VERSION="${{ steps.meta.outputs.plugin_version }}"
+          CREATORS="${{ steps.meta.outputs.creators }}"
+          DESC="${{ steps.meta.outputs.description }}"
+
+          BODY="## ${NAME} v${VERSION}
+
+          **Description:** ${DESC}
+          **Creators:** ${CREATORS}
+          **File:** \`${DECK}\`"
+
+          # Create the release
+          RELEASE_RESPONSE=$(curl -s -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            "https://api.github.com/repos/${{ github.repository }}/releases" \
+            -d "{
+              \"tag_name\": \"$TAG\",
+              \"name\": \"$NAME v$VERSION\",
+              \"body\": $(echo "$BODY" | jq -Rs .),
+              \"draft\": false,
+              \"prerelease\": false
+            }")
+
+          echo "$RELEASE_RESPONSE" | jq .
+          UPLOAD_URL=$(echo "$RELEASE_RESPONSE" | jq -r '.upload_url' | sed 's/{?name,label}//')
+
+          if [ -z "$UPLOAD_URL" ] || [ "$UPLOAD_URL" = "null" ]; then
+            echo "ERROR: Failed to get upload URL"
+            exit 1
+          fi
+
+          # Upload the .deck asset
+          curl -s -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/zip" \
+            --data-binary @"$DECK" \
+            "$UPLOAD_URL?name=$DECK"
+
+          echo "Release created: $TAG"
+
+  update-manifests:
+    needs: [detect-changes, build-and-release]
+    if: always() && needs.detect-changes.outputs.plugins != '[]' && needs.detect-changes.outputs.plugins != ''
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Update manifest.json and plugin.json files
+        run: |
+          python3 scripts/update_manifests.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          CHANGED_PLUGINS: ${{ needs.detect-changes.outputs.plugins }}
+
+      - name: Commit manifest updates
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add manifest.json **/plugin.json
+          # Only commit if there are actual changes
+          git diff --staged --quiet || git commit -m "chore: update manifests [skip ci]"
+          git push
