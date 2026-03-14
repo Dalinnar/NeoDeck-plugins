@@ -9,7 +9,7 @@
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/death_counter/assets/icon.jpg",
     "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/death_counter%401.0.3/death_counter-1.0.3.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/death_counter/plugin.json",
-    "updated_at": "2026-03-10T15:44:05.133782+00:00"
+    "updated_at": "2026-03-10T16:48:16.319401+00:00"
   },
   "mega_macros": {
     "plugin_name": "mega_macros",
@@ -21,19 +21,7 @@
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/mega_macros/assets/icon.jpg",
     "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/mega_macros%401.4.3/mega_macros-1.4.3.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/mega_macros/plugin.json",
-    "updated_at": "2026-03-10T15:44:05.804653+00:00"
-  },
-  "OBS_studio": {
-    "plugin_name": "OBS_studio",
-    "description": "A powerful NeoDeck plugin for OBS Studio that lets you control scenes, sources, audio, and more with a single press.",
-    "creators": [
-      "Dalinnar"
-    ],
-    "latest_version": "1.1.4",
-    "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/obs_studio/assets/icon.jpg",
-    "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/OBS_studio%401.1.4/OBS_studio-1.1.4.deck",
-    "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/obs_studio/plugin.json",
-    "updated_at": "2026-03-10T15:44:06.367884+00:00"
+    "updated_at": "2026-03-10T16:48:16.816711+00:00"
   },
   "soundboard": {
     "plugin_name": "soundboard",
@@ -45,7 +33,7 @@
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/soundboard/assets/icon.jpg",
     "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/soundboard%401.0.3/soundboard-1.0.3.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/soundboard/plugin.json",
-    "updated_at": "2026-03-10T15:44:06.935569+00:00"
+    "updated_at": "2026-03-10T16:48:17.782776+00:00"
   },
   "spotify_connect": {
     "plugin_name": "spotify_connect",
@@ -57,7 +45,7 @@
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/spotify_connect/assets/icon.jpg",
     "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/spotify_connect%401.0.3/spotify_connect-1.0.3.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/spotify_connect/plugin.json",
-    "updated_at": "2026-03-10T15:44:07.495947+00:00"
+    "updated_at": "2026-03-10T16:48:18.347332+00:00"
   },
   "twitch_control": {
     "plugin_name": "twitch_control",
@@ -69,7 +57,7 @@
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/twitch_control/assets/icon.jpg",
     "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/twitch_control%401.0.3/twitch_control-1.0.3.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/twitch_control/plugin.json",
-    "updated_at": "2026-03-10T15:44:08.056415+00:00"
+    "updated_at": "2026-03-10T16:48:18.825313+00:00"
   },
   "voicemod": {
     "plugin_name": "voicemod",
@@ -81,6 +69,18 @@
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/voicemod/assets/icon.jpg",
     "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/voicemod%401.0.4/voicemod-1.0.4.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/voicemod/plugin.json",
-    "updated_at": "2026-03-10T15:44:08.597486+00:00"
+    "updated_at": "2026-03-10T16:48:19.277154+00:00"
+  },
+  "obs_studio": {
+    "plugin_name": "obs_studio",
+    "description": "A powerful NeoDeck plugin for OBS Studio that lets you control scenes, sources, audio, and more with a single press.",
+    "creators": [
+      "Dalinnar"
+    ],
+    "latest_version": "1.1.5",
+    "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/obs_studio/assets/icon.jpg",
+    "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/obs_studio%401.1.5/obs_studio-1.1.5.deck",
+    "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/obs_studio/plugin.json",
+    "updated_at": "2026-03-10T16:48:17.300519+00:00"
   }
 }
