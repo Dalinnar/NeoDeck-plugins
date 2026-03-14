@@ -9,7 +9,7 @@ from obswebsocket.exceptions import ConnectionFailure
 def with_obs_connection(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
-        settings = current_app.get_settings("OBS_studio")
+        settings = current_app.get_settings("obs_studio")
         ws = obsws(
             current_app.local_ip,
             settings.get("server_port", 4455),
