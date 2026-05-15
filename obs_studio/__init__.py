@@ -22,11 +22,24 @@ plugin.metadata = {
 }
 
 plugin.settings = {
-    "#check_connection" : "/obs/check_connection",
-    "server_port" : 4455,
-    "_server_password" : "",
-
-    }
+    "check_connection": {
+        "type": "status",
+        "endpoint": "/obs/check_connection",
+    },
+    "obs_guide": {
+        "type": "link",
+        "href": "https://github.com/obsproject/obs-websocket/blob/master/docs/generated/protocol.md",
+    },
+    "server_port": {
+        "type": "number",
+        "default": 4455,
+    },
+    "server_password": {
+        "type": "text",
+        "default": "",
+        "secret": True,
+    },
+}
 
 plugin.command_map = {
     

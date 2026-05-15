@@ -17,11 +17,25 @@ plugin = Blueprint(plugin_name, __name__)
 "#" : link reference, to go and see maybe some docts about how to ...
 "_" : private variable, not visible in the settings
 """
+# Voicemod
 plugin.settings = {
-    "_voicemod_key" :"",    
-    "port": 59129,
-    "uuid" : str(uuid.uuid4()),
-    "#get_your_key_here": "https://control-api.voicemod.net/"
+    "get_your_key_here": {
+        "type": "link",
+        "href": "https://control-api.voicemod.net/",
+    },
+    "voicemod_key": {
+        "type": "text",
+        "default": "",
+        "secret": True,
+    },
+    "port": {
+        "type": "number",
+        "default": 59129,
+    },
+    "uuid": {
+        "type": "text",
+        "default": str(uuid.uuid4()),
+    },
 }
 
 # PLUGIN METADATA

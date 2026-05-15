@@ -11,11 +11,26 @@ description = "Control Spotify and manage your playlists directly from your deck
 plugin = Blueprint(plugin_name, __name__)
 plugin.BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# Spotify
 plugin.settings = {
-    "#conect_to_spotify": "/spotyconect",
-    "#make_your_app": "https://developer.spotify.com/dashboard",
-    "_Client_ID": "",
-    "_Client_Secret": ""
+    "conect_to_spotify": {
+        "type": "link",
+        "href": "/spotyconect",
+    },
+    "make_your_app": {
+        "type": "link",
+        "href": "https://developer.spotify.com/dashboard",
+    },
+    "client_id": {
+        "type": "text",
+        "default": "",
+        "secret": True,
+    },
+    "client_secret": {
+        "type": "text",
+        "default": "",
+        "secret": True,
+    },
 }
 
 plugin.metadata = {

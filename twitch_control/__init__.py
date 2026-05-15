@@ -10,12 +10,31 @@ description = "Easily interact with your Twitch audience using powerful chat com
 plugin = Blueprint(plugin_name, __name__)
 
 
+# Twitch
 plugin.settings = {
-    "_access_token" : "",
-    "_client_id" : "",
-    "twitch_username": "",
-    "_refresh_token" : "",
-    "#get_your_api_key_here": "https://twitchtokengenerator.com/", 
+    "get_your_api_key_here": {
+        "type": "link",
+        "href": "https://twitchtokengenerator.com/",
+    },
+    "twitch_username": {
+        "type": "text",
+        "default": "",
+    },
+    "access_token": {
+        "type": "text",
+        "default": "",
+        "secret": True,
+    },
+    "client_id": {
+        "type": "text",
+        "default": "",
+        "secret": True,
+    },
+    "refresh_token": {
+        "type": "text",
+        "default": "",
+        "secret": True,
+    },
 }
 # PLUGIN METADATA
 plugin.metadata= {
