@@ -189,6 +189,7 @@ def main():
             "plugin_name": plugin_name,
             "description": meta["description"],
             "creators": meta["creators"],
+            "min_app_version" : meta.get("min_app_version",""),
             "latest_version": plugin_version,
             "icon_url": icon_url,
             "updated_at": datetime.now(timezone.utc).isoformat(),
