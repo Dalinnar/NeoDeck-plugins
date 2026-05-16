@@ -4,9 +4,10 @@
   "creators": [
     "Dalinnar"
   ],
+  "min_app_version": "",
   "latest_version": "1.0.3",
   "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/spotify_connect/assets/icon.jpg",
-  "updated_at": "2026-03-14T18:21:26.797584+00:00",
+  "updated_at": "2026-05-16T23:03:05.718259+00:00",
   "releases": [
     {
       "version": "1.0.3",

@@ -4,9 +4,10 @@
   "creators": [
     "Dalinnar"
   ],
+  "min_app_version": "",
   "latest_version": "1.1.6",
   "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/obs_studio/assets/icon.jpg",
-  "updated_at": "2026-03-14T18:21:25.709050+00:00",
+  "updated_at": "2026-05-16T23:03:04.302051+00:00",
   "releases": [
     {
       "version": "1.1.6",

@@ -4,9 +4,10 @@
   "creators": [
     "Dalinnar"
   ],
+  "min_app_version": "",
   "latest_version": "1.4.3",
   "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/mega_macros/assets/icon.jpg",
-  "updated_at": "2026-03-14T18:21:25.260247+00:00",
+  "updated_at": "2026-05-16T23:03:03.681522+00:00",
   "releases": [
     {
       "version": "1.4.3",
