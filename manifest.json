@@ -5,11 +5,11 @@
     "creators": [
       "Dalinnar"
     ],
-    "latest_version": "1.0.3",
+    "latest_version": "1.0.4",
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/death_counter/assets/icon.jpg",
-    "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/death_counter%401.0.3/death_counter-1.0.3.deck",
+    "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/death_counter%401.0.4/death_counter-1.0.4.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/death_counter/plugin.json",
-    "updated_at": "2026-05-16T23:03:03.065889+00:00"
+    "updated_at": "2026-05-16T23:09:48.546770+00:00"
   },
   "mega_macros": {
     "plugin_name": "mega_macros",
