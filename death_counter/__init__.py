@@ -5,7 +5,8 @@ from death_counter.routes import *
 
 # CHANGE THESE VALUES FOR THE PLUGIN
 plugin_name = 'death_counter'  # Plugin name
-plugin_version = "1.0.3"  # Plugin version
+plugin_version = "1.0.4"  # Plugin version
+min_app_version = "1.0.0.1"
 creators = ["Dalinnar"]  # List of creators
 description = "A simple counter to track deaths,runs, or any other actions with ease."
 

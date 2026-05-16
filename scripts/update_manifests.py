@@ -51,6 +51,7 @@ def read_plugin_meta(plugin_dir: Path) -> dict | None:
         return {
             "plugin_name": extract("plugin_name"),
             "plugin_version": extract("plugin_version"),
+            "min_app_version": extract("min_app_version"),
             "creators": extract("creators"),
             "description": extract("description"),
         }
@@ -189,7 +190,6 @@ def main():
             "plugin_name": plugin_name,
             "description": meta["description"],
             "creators": meta["creators"],
-            "min_app_version" : meta.get("min_app_version",""),
             "latest_version": plugin_version,
             "icon_url": icon_url,
             "updated_at": datetime.now(timezone.utc).isoformat(),
