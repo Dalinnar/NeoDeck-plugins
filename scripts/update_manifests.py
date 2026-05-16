@@ -51,7 +51,6 @@ def read_plugin_meta(plugin_dir: Path) -> dict | None:
         return {
             "plugin_name": extract("plugin_name"),
             "plugin_version": extract("plugin_version"),
-            "min_app_version": extract("min_app_version"),
             "creators": extract("creators"),
             "description": extract("description"),
         }
