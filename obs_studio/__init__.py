@@ -7,7 +7,7 @@ from obs_studio.functions import *
 #LEARN HOW TO USE OBS WEBSOCKET ON 
 #https://github.com/obsproject/obs-websocket/blob/master/docs/generated/protocol.md
 plugin_name = 'obs_studio'
-plugin_version = "1.2.6"
+plugin_version = "1.2.7"
 creators = ["Dalinnar"]
 description = "A powerful NeoDeck plugin for OBS Studio that lets you control scenes, sources, audio, and more with a single press."
 
