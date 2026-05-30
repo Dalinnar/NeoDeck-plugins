@@ -1,6 +1,8 @@
-from flask import Response, current_app, jsonify, request
+# routes.py
+
+from flask import Response, current_app, jsonify
 import json
-from obs_studio.functions import *
+from obs_studio.functions import get_obs_manager, generate_obs_scene_folder,generate_obs_sources_folder
 
 
 # ─────────────────────────────────────────────
@@ -8,14 +10,16 @@ from obs_studio.functions import *
 # ─────────────────────────────────────────────
 
 def get_scene_list_page():
-    return Response(json.dumps(get_scene_list()), mimetype='application/json')
+    obs = get_obs_manager()
+    return Response(json.dumps(obs.get_scene_list()), mimetype='application/json')
 
 def get_source_list_page():
-    return Response(json.dumps(get_source_list()), mimetype='application/json')
+    obs = get_obs_manager()
+    return Response(json.dumps(obs.get_source_list()), mimetype='application/json')
 
 def get_audio_source_list_page():
-    return Response(json.dumps(get_audio_source_list()), mimetype='application/json')
-
+    obs = get_obs_manager()
+    return Response(json.dumps(obs.get_audio_source_list()), mimetype='application/json')
 
 
 # ─────────────────────────────────────────────
@@ -23,15 +27,22 @@ def get_audio_source_list_page():
 # ─────────────────────────────────────────────
 
 def dynamic_scenes():
-    return jsonify({"success": True, "data": generate_obs_scene_folder(get_scene_list())})
+    obs = get_obs_manager()
+    return jsonify({"success": True, "data": generate_obs_scene_folder(obs.get_scene_list())})
 
+
+def dynamic_sources():
+    obs = get_obs_manager()
+    scene_items = obs.get_scene_item_list()  # usa la escena actual
+    return jsonify({"success": True, "data": generate_obs_sources_folder(scene_items)})
 
 # ─────────────────────────────────────────────
 #  Status endpoints
 # ─────────────────────────────────────────────
 
 def check_connection():
-    if obs_is_connected():
+    obs = get_obs_manager()
+    if obs.connected:
         return Response(
             json.dumps({"message": "OBS connected successfully"}),
             status=200,

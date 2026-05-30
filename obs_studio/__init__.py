@@ -1,13 +1,11 @@
-from flask import Blueprint,current_app
+# __init__.py
+
+from flask import Blueprint
 from obs_studio.routes import *
-from obs_studio.functions import *
+from obs_studio.functions import get_obs_manager, generate_obs_scene_folder
 
-
-#CHANGE plugin_template TO YOUR PLUGIN NAME
-#LEARN HOW TO USE OBS WEBSOCKET ON 
-#https://github.com/obsproject/obs-websocket/blob/master/docs/generated/protocol.md
 plugin_name = 'obs_studio'
-plugin_version = "1.2.7"
+plugin_version = "1.3.0"
 creators = ["Dalinnar"]
 description = "A powerful NeoDeck plugin for OBS Studio that lets you control scenes, sources, audio, and more with a single press."
 
@@ -42,31 +40,30 @@ plugin.settings = {
 }
 
 plugin.command_map = {
-    
-    "/obs_toggle_recording":        lambda: toggle_recording(),
-    "/obs_start_recording":         lambda: start_recording(),
-    "/obs_stop_recording":          lambda: stop_recording(),
-    "/obs_toggle_streaming":        lambda: toggle_streaming(),
-    "/obs_start_streaming":         lambda: start_streaming(),
-    "/obs_stop_streaming":          lambda: stop_streaming(),
-    "/obs_toggle_virtual_camera":    lambda: toggle_virtual_camera(), #
-
-    "/obs_change_scene":            lambda message: change_scene(message),
-    "/obs_trigger_hotkey":          lambda message: trigger_hotkey(message),
-    "/obs_toggle_source" :          lambda message: toggle_source(message),
-    "!obs_set_volume":              lambda message: set_source_volume(message),
-    "/obs_raw_request" :           lambda message: raw_ws_call(message)
-}   
-plugin.monitors= {}
-
-plugin.getters = {
-    "!obs_set_volume":              lambda message: get_source_volume(message)
-
+    "/obs_toggle_recording":      lambda:         get_obs_manager().toggle_recording(),
+    "/obs_start_recording":       lambda:         get_obs_manager().start_recording(),
+    "/obs_stop_recording":        lambda:         get_obs_manager().stop_recording(),
+    "/obs_toggle_streaming":      lambda:         get_obs_manager().toggle_streaming(),
+    "/obs_start_streaming":       lambda:         get_obs_manager().start_streaming(),
+    "/obs_stop_streaming":        lambda:         get_obs_manager().stop_streaming(),
+    "/obs_toggle_virtual_camera": lambda:         get_obs_manager().toggle_virtual_camera(),
+    "/obs_change_scene":          lambda message: get_obs_manager().change_scene(message.split(" ", 1)[1]),
+    "/obs_trigger_hotkey":        lambda message: get_obs_manager().trigger_hotkey(message.split(" ", 1)[1]),
+    "/obs_toggle_source":         lambda message: get_obs_manager().toggle_source(message.split(" ", 1)[1]),
+    "!obs_set_volume":            lambda message: get_obs_manager().set_source_volume(message.split(" ", 1)[1]),
+    "/obs_raw_request":           lambda message: get_obs_manager().raw_call(message.split(" ", 1)[1]),
 }
 
-#ROUTES
-plugin.add_url_rule('/obs/get_scenes', view_func=get_scene_list_page)
-plugin.add_url_rule('/obs/get_sources', view_func=get_source_list_page)
+plugin.monitors = {}
+
+plugin.getters = {
+    "!obs_set_volume": lambda message: get_obs_manager().get_source_volume(message),
+}
+
+# ── routes ────────────────────────────────────────────────────────────────────
+plugin.add_url_rule('/obs/get_scenes',        view_func=get_scene_list_page)
+plugin.add_url_rule('/obs/get_sources',       view_func=get_source_list_page)
 plugin.add_url_rule('/obs/get_audio_sources', view_func=get_audio_source_list_page)
-plugin.add_url_rule('/obs/scenes', view_func=dynamic_scenes)
-plugin.add_url_rule("/obs/check_connection",view_func=check_connection)
+plugin.add_url_rule('/obs/sources', view_func=dynamic_sources)
+plugin.add_url_rule('/obs/scenes',            view_func=dynamic_scenes)
+plugin.add_url_rule('/obs/check_connection',  view_func=check_connection)

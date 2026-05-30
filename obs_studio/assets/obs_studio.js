@@ -10,3 +10,15 @@ function open_scenes(){
 
     })
 }
+
+function open_sources(){
+    console.log("open_sources")
+
+    let sources_url = "/obs/sources";
+
+    fetch(sources_url).then(response => response.json())
+    .then(data => {
+        console.log(data.data)
+        updateGrid(data.data)
+    })
+}
