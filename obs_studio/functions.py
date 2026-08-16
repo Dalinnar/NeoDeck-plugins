@@ -1,4 +1,6 @@
 import math
+import ast
+import re
 import json
 from obswebsocket import obsws, requests as obsrequests
 from obswebsocket.exceptions import ConnectionFailure
@@ -189,6 +191,69 @@ class OBSManager:
 
 # ── standalone utility (no WebSocket) ────────────────────────────────────────
 
+def _parse_args(message: str, expected: int):
+    """Extrae los argumentos después del nombre del comando."""
+    parts = message.split(" ", expected)
+    args = parts[1:]  # descarta el nombre del comando
+    if len(args) < expected:
+        # faltan argumentos, rellenamos con None para detectarlo después
+        args += [None] * (expected - len(args))
+    return args
+
+
+def _set_volume(message):
+    source_name, level = _parse_args(message, 2)
+    if level is None:
+        raise ValueError("Uso: !obs_set_volume <source> <level>")
+    return get_obs_manager().set_source_volume(source_name, int(level))
+
+
+def _get_volume(message):
+    source_name, = _parse_args(message, 1)
+    if source_name is None:
+        raise ValueError("Uso: !obs_set_volume <source>")
+    return get_obs_manager().get_source_volume(source_name)
+
+def _raw_request(message):
+    match = re.search(r"\|(.*?)\|\s*\|(.*?)\|", message)
+    if not match:
+        raise ValueError("Uso: /obs_raw_request |RequestType| |RequestDataJSON|")
+    
+    request_type = match.group(1).strip()
+    raw_data = match.group(2).strip()
+    data = _parse_request_data(raw_data)
+    
+    return get_obs_manager().raw_call(request_type, data)
+
+
+def _parse_request_data(raw_data: str) -> dict:
+    """Parsea el JSON del raw request, tolerando comillas simples y sintaxis mixta JSON/Python."""
+    if not raw_data:
+        return {}
+
+    # 1. Intento directo: JSON estricto válido
+    try:
+        return json.loads(raw_data)
+    except json.JSONDecodeError:
+        pass
+
+    # 2. Fallback: normalizar keywords JSON → Python, luego literal_eval
+    normalized = re.sub(r'\btrue\b', 'True', raw_data)
+    normalized = re.sub(r'\bfalse\b', 'False', normalized)
+    normalized = re.sub(r'\bnull\b', 'None', normalized)
+
+    try:
+        parsed = ast.literal_eval(normalized)
+        if not isinstance(parsed, dict):
+            raise ValueError("El requestData debe ser un objeto/diccionario.")
+        return parsed
+    except (ValueError, SyntaxError) as e:
+        raise ValueError(
+            f"requestData inválido. Debe ser JSON válido (con comillas dobles) "
+            f"o sintaxis tipo Python. Error: {e}"
+        )
+
+
 def generate_obs_scene_folder(scenes: list[str]) -> dict:
     cols = 4
     rows = (len(scenes) + cols - 1) // cols
@@ -226,14 +291,17 @@ def generate_obs_scene_folder(scenes: list[str]) -> dict:
 # functions.py  — add this helper at the bottom
 
 def get_obs_manager() -> OBSManager:
-    """Return a connected OBSManager built from the current app's settings."""
     settings = current_app.get_settings("obs_studio")
     manager = OBSManager(
         host=current_app.local_ip,
         port=settings.get("server_port", 4455),
         password=settings.get("server_password", ""),
     )
-    manager.connect()
+    if not manager.connect():
+        raise RuntimeError(
+            "No se pudo conectar a OBS. Verificá que esté abierto, "
+            "que el WebSocket server esté habilitado y que el puerto/contraseña sean correctos."
+        )
     return manager
 
 
