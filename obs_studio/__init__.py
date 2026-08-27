@@ -5,7 +5,7 @@ from obs_studio.routes import *
 from obs_studio.functions import _raw_request, get_obs_manager, generate_obs_scene_folder,_set_volume,_get_volume
 
 plugin_name = 'obs_studio'
-plugin_version = "1.3.1"
+plugin_version = "1.3.2"
 creators = ["Dalinnar"]
 description = "A powerful NeoDeck plugin for OBS Studio that lets you control scenes, sources, audio, and more with a single press."
 
@@ -64,6 +64,6 @@ plugin.getters = {
 plugin.add_url_rule('/obs/get_scenes',        view_func=get_scene_list_page)
 plugin.add_url_rule('/obs/get_sources',       view_func=get_source_list_page)
 plugin.add_url_rule('/obs/get_audio_sources', view_func=get_audio_source_list_page)
-plugin.add_url_rule('/obs/sources', view_func=dynamic_sources)
+plugin.add_url_rule('/obs/sources',           view_func=dynamic_sources)
 plugin.add_url_rule('/obs/scenes',            view_func=dynamic_scenes)
 plugin.add_url_rule('/obs/check_connection',  view_func=check_connection)

@@ -1,11 +1,11 @@
 {
   "obs_studio": {
     "change_screne": {
-      "command": "/obs_change_scene {obs-scene}",
+      "command": "/obs_change_scene {obs_scene}",
       "inputs": [
         {
           "TYPE": "select",
-          "name": "obs-scene",
+          "name": "obs_scene",
           "options_url": "/obs/get_scenes"
         }
       ]
@@ -19,11 +19,11 @@
       "inputs": []
     },
     "trigger_hotkey": {
-      "command": "/obs_trigger_hotkey {obs-hotkey}",
+      "command": "/obs_trigger_hotkey {obs_hotkey}",
       "inputs": [
         {
           "TYPE": "input text",
-          "name": "obs-hotkey"
+          "name": "obs_hotkey"
         }
       ]
     },
@@ -54,24 +54,24 @@
       "inputs": []
     },
     "toggle_source": {
-      "command": "/obs_toggle_source {obs-source}",
+      "command": "/obs_toggle_source {obs_source}",
       "toggleable": true,
       "inputs": [
         {
           "TYPE": "select",
-          "name": "obs-source",
+          "name": "obs_source",
           "options_url": "/obs/get_sources"
         }
       ]
     },
     "set_volume": {
-      "command": "!obs_set_volume {obs-source}",
+      "command": "!obs_set_volume {obs_source}",
       "min": "0",
       "max": "100",
       "inputs": [
         {
           "TYPE": "select",
-          "name": "obs-source",
+          "name": "obs_source",
           "options_url": "/obs/get_audio_sources"
         }
       ]
