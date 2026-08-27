@@ -9,7 +9,7 @@
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/death_counter/assets/icon.jpg",
     "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/death_counter%401.0.5/death_counter-1.0.5.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/death_counter/plugin.json",
-    "updated_at": "2026-05-30T02:17:24.734452+00:00"
+    "updated_at": "2026-08-16T04:15:11.997592+00:00"
   },
   "mega_macros": {
     "plugin_name": "mega_macros",
@@ -21,7 +21,7 @@
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/mega_macros/assets/icon.jpg",
     "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/mega_macros%401.4.3/mega_macros-1.4.3.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/mega_macros/plugin.json",
-    "updated_at": "2026-05-30T02:17:25.336548+00:00"
+    "updated_at": "2026-08-16T04:15:12.653180+00:00"
   },
   "soundboard": {
     "plugin_name": "soundboard",
@@ -33,7 +33,7 @@
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/soundboard/assets/icon.jpg",
     "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/soundboard%401.0.3/soundboard-1.0.3.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/soundboard/plugin.json",
-    "updated_at": "2026-05-30T02:17:26.673955+00:00"
+    "updated_at": "2026-08-16T04:15:13.965894+00:00"
   },
   "spotify_connect": {
     "plugin_name": "spotify_connect",
@@ -45,7 +45,7 @@
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/spotify_connect/assets/icon.jpg",
     "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/spotify_connect%401.1.3/spotify_connect-1.1.3.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/spotify_connect/plugin.json",
-    "updated_at": "2026-05-30T02:17:27.311163+00:00"
+    "updated_at": "2026-08-16T04:15:14.603108+00:00"
   },
   "twitch_control": {
     "plugin_name": "twitch_control",
@@ -57,7 +57,7 @@
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/twitch_control/assets/icon.jpg",
     "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/twitch_control%401.1.3/twitch_control-1.1.3.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/twitch_control/plugin.json",
-    "updated_at": "2026-05-30T02:17:27.921438+00:00"
+    "updated_at": "2026-08-16T04:15:15.231698+00:00"
   },
   "voicemod": {
     "plugin_name": "voicemod",
@@ -69,7 +69,7 @@
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/voicemod/assets/icon.jpg",
     "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/voicemod%401.1.4/voicemod-1.1.4.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/voicemod/plugin.json",
-    "updated_at": "2026-05-30T02:17:28.604584+00:00"
+    "updated_at": "2026-08-16T04:15:15.933300+00:00"
   },
   "obs_studio": {
     "plugin_name": "obs_studio",
@@ -77,10 +77,10 @@
     "creators": [
       "Dalinnar"
     ],
-    "latest_version": "1.3.0",
+    "latest_version": "1.3.1",
     "icon_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/obs_studio/assets/icon.jpg",
-    "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/obs_studio%401.3.0/obs_studio-1.3.0.deck",
+    "download_url": "https://github.com/Dalinnar/NeoDeck-plugins/releases/download/obs_studio%401.3.1/obs_studio-1.3.1.deck",
     "plugin_json_url": "https://raw.githubusercontent.com/Dalinnar/NeoDeck-plugins/main/obs_studio/plugin.json",
-    "updated_at": "2026-05-30T02:17:26.002763+00:00"
+    "updated_at": "2026-08-16T04:15:13.336879+00:00"
   }
 }
